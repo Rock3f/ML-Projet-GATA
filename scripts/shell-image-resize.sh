@@ -20,6 +20,7 @@
 DIRECTORY=$(cd `dirname $0` && pwd)
 # Absolute path to image folder
 FOLDER="${DIRECTORY::${#DIRECTORY}-7}"
+echo $FOLDER
 
 # Max height
 WIDTH=300
@@ -35,7 +36,7 @@ HEIGHT=400
 #find ${FOLDER} -iname '*.png' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
 
 # Resize jpg only to either height or width, keeps proportions using imagemagick
-find ${FOLDER} -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
+find "${FOLDER}" -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
 
 # Alternative
 #mogrify -path ${FOLDER} -resize ${WIDTH}x${HEIGHT}% *.png -verbose
