@@ -25,7 +25,7 @@ Créer une application permettant d'identifier les personnes de la classe à par
 
 ### Clonage du projet sur votre machine
 
-  git clone https://github.com/Rock3f/ML-Projet-GATA.git
+    git clone https://github.com/Rock3f/ML-Projet-GATA.git
 
 ### Installation des paquets
 
@@ -37,11 +37,12 @@ Note pour Windows :
  - Le fichier Batch n'est pas encore terminé, vous ne pourrez donc pas avoir l'option dans le menu et devrez utiliser le resize des images via Python - OpenCV (voir ci-après)
 
 Une fois votre environnement python installé, veillez à avoir l'assistant pip d'installé. Vous pourrez utiliser les commandes ci-dessous pour récupérer le nécessaire :
-  pip install CMake
-  pip install face_recognition
-  pip install pickle
-  pip install opencv-python
-  pip install imutils
+
+    pip install CMake
+    pip install face_recognition
+    pip install pickle
+    pip install opencv-python
+    pip install imutils
 
 ## Paramètrage des images
 
