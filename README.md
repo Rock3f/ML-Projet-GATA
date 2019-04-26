@@ -27,17 +27,20 @@ Créer une application permettant d'identifier les personnes de la classe à par
 
 TODO
 
-### Pamètrage des images
+## Paramètrage des images
 
-  Nous mettons à disposition un script shell/batch pour resize vos images afin de permettre aux ordinateurs moins puissants de pouvoir exécuter rapidement le programme de reconnaissance.
-  Veuillez noter que nous nous sommes basés sur un tutoriel sur internet, vous trouverez les références dans les commentaires du script.
+:exclamation: Important :exclamation:
 
-  :exclamation: Important :exclamation:
+Vous pouvez modifier votre variable FOLDER présente dans le script, par défaut, nous l'avons paramétré sur le projet pour prendre en compte les dossier dataset ET test
 
-Vous devez impérativement modifier votre variable FOLDER présente dans le script :
+### Par défaut avec Python - OpenCV
 
-![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/BatchResize_InitConfig.png)
+TODO
 
-Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser
+### Via Script Shell/Batch - ImageMagick
+
+Nous mettons à disposition un script shell/batch pour resize vos images afin de permettre aux ordinateurs moins puissants de pouvoir exécuter rapidement le programme de reconnaissance.
+
+Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser.
 
 Pour plus d'informations, vous pouvez vous réferer au "ConfigScript.md"
