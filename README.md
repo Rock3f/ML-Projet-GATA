@@ -36,6 +36,6 @@ Créer une application permettant d'identifier les personnes de la classe à par
 
 	Vous devez impérativement modifier votre variable FOLDER présente dans le script :
 
-![alt text](https://github.com/Rock3f/ML-Projet-GATA/tree/master/.assets/BatchResize_InitConfig.png)
+![alt text](https://raw.githubusercontent.com/Rock3f/ML-Projet-GATA/tree/master/.assets/BatchResize_InitConfig.png)
 
 
