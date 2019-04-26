@@ -20,7 +20,6 @@
 # Absolute path to image folder
 FOLDER="/media/alexandre/8628ADC128ADB11B/Cours/Machine_Learning/ML-Projet-GATA/dataset"
 
-
 # Max height
 WIDTH=300
 
