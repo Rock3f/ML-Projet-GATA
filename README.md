@@ -25,17 +25,17 @@ Créer une application permettant d'identifier les personnes de la classe à par
 
 ### Installation des paquets
 
-	TODO
+TODO
 
 ### Pamètrage des images
 
-	Nous mettons à disposition un script batch pour resize vos images afin de permettre aux ordinateurs moins puissants de pouvoir exécuter rapidement le programme de reconnaissance.
-	Veuillez noter que nous nous sommes basés sur un tutoriel sur internet, vous trouverez les références dans les commentaires du script.
+  Nous mettons à disposition un script shell/batch pour resize vos images afin de permettre aux ordinateurs moins puissants de pouvoir exécuter rapidement le programme de reconnaissance.
+  Veuillez noter que nous nous sommes basés sur un tutoriel sur internet, vous trouverez les références dans les commentaires du script.
 
-	Important
+  :exclamation: Important :exclamation:
 
-	Vous devez impérativement modifier votre variable FOLDER présente dans le script :
+Vous devez impérativement modifier votre variable FOLDER présente dans le script :
 
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/BatchResize_InitConfig.png)
 
-
+Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser
