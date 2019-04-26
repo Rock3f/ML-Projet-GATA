@@ -1,7 +1,9 @@
+# -*- coding: latin-1 -*-
+
 from imutils import paths
 from imutils.video import VideoStream
 import imutils
-#import face_recognition
+import face_recognition
 import pickle
 import cv2
 import os
@@ -21,7 +23,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	image = cv2.imread(image)
 	rgb = get_RGB(image)	
 
-	# Detection des coordonnees (x,y) de chaque visage sur l'image 
+	# Détection des coordonnees (x,y) de chaque visage sur l'image 
 	print("Reconnaissances des visages")
 	boxes = face_recognition.face_locations(rgb, model=detection_method)
 	#Encodage des visages
