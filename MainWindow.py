@@ -5,6 +5,9 @@ import cv2
 import os
 import numpy as np
 
+def getRGB(source):
+    return cv2.cvtColor(source, cv2.COLOR_BGR2RGB)
+
 def load_model(path_dataset, path_encoding, detection_method ) :
 
 	# Récupération du path vers notre dataset d'images
@@ -23,7 +26,7 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 
 		# Chargment des images et conversion en RGB (OpenCV ordering)
 		image = cv2.imread(image_path)
-		rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+		rgb = getRGB(image)
 
 		# Détection de chaque visage par coordonnées(x, y)
 		# correspondant à chaque visage sur une image
@@ -32,10 +35,9 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 		# Récupération de la version encodée de l'ensemble des visages
 		encodings = face_recognition.face_encodings(rgb, boxes)
 
-		# Boucle au travers l'ensemble de l'encodage
+		# Boucle au travers l'ensemble des encodages
 		for encoding in encodings:
-			# add each encoding + name to our set of known names and
-			# encodings
+			# Ajout d'un tuple encoding + name à note modèle
 			known_encodings.append(encoding)
 			known_names.append(name)
 
@@ -48,16 +50,21 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 
 	print("Chargement du modele termine")
 
+#Affichage du menu
 def display_menu(options):
+	# affichage des options suivant le tableau d'options passé en paramètre
 	for i in range(len(options)):
 		print("{:d}. {:s}".format(i+1, options[i]))
 	
 	choice = 0
+	#Attente de la réponse utilisateur
+	#Si l'élément envoyé par l'utilisateur n'est pas dans le tableau alors l'utilisateur est prompté de nouveau
 	while not(np.any(choice == np.arange(len(options))+1)):
 		choice = input_number("Choississez une option du menu : ")
 	
 	return choice
 
+#Conversion du message en float
 def input_number(message) :
 	while True : 
 		try:
