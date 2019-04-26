@@ -29,7 +29,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	# Boucle sur l'ensemble des visages détectés 
 	for encoding in encodings:
 		# Comparaison des visages
-		matches = face_recognition.compare_faces(encodings,encoding)
+		matches = face_recognition.compare_faces(data["encodings"],encoding)
 		name = "Non reconnu"
 
 		# Si le visage correspond
@@ -64,7 +64,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	# show the output image
 	cv2.imshow("Image", image)
 
-	print("Après avoir vu votre belle image, appuyer sur n'importe quelle touche")
+	print("Après avoir vu votre belle image, appuyer sur n'importe quelle touche (dans l'image)")
 	cv2.waitKey(0)
 
 def load_model(path_dataset, path_encoding, detection_method ) :
