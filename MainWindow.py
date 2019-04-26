@@ -72,6 +72,7 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 	# Récupération du path vers notre dataset d'images
 	print("Recupération des informations concernant les images du dataset ...")
 	image_paths = list(paths.list_images(path_dataset))
+	print(image_paths)
 
 	# initialisation des variables de stockages
 	known_encodings = []
@@ -133,6 +134,32 @@ def input_number(message) :
 			pass
 	return num
 
+#Redimensionne les images d'un dossier
+def resize_img(path) :
+
+	#Pour chaque image du dossier et des sous-dossier
+	for root, dirs, files in os.walk(path):
+		for file in files:
+			#Charge l'image
+			img = cv2.imread("%s\\%s" %(root, file), cv2.IMREAD_UNCHANGED)
+			#Définition d'une taille standard
+			max_width = 400
+			#Calcul le pourcentage entre la dimension standard et la dimension actuelle de l'image
+			scale_percent = int(img.shape[1]) / max_width
+			#Si l'image est plus large que la dimension standard
+			if int(img.shape[1] > 400) :
+				#Définie la largeur au format standard
+				width = int(img.shape[1] * scale_percent / 100)
+				#Définie la hauteur en conservant les proportions
+				height = int(img.shape[0] * scale_percent / 100)
+				dim = (width, height)
+				#Redimensionne l'image 
+				resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+				#Enregistre l'image modifiée au même endroit pour éviter les doublons
+				cv2.imwrite("%s\\%s" %(root, file) ,resized);
+
+
+
 def main():
 	print("------------------------------------------------")
 	print()
@@ -142,7 +169,7 @@ def main():
 	path_dataset = "dataset"
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
-	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Quitter"])
+	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Redimensionner les images", "Quitter"])
 	print()
 	print("------------------------------------------------")
 	print()
@@ -156,9 +183,11 @@ def main():
 			load_model(path_dataset,path_encoding,detection_method)
 		elif choice == 2:
 			path_image = input("Saisissez l'URI de l'image de test : ")
-
 			reconnaissance_image(path_encoding, path_image, detection_method)
 		elif choice == 3:
+			path_folder = input("Saisissez l'URI du dossier contenant les images : ")
+			resize_img(path_folder)
+		elif choice == 4:
 			print("Fermeture de l'application...")
 			break
 
