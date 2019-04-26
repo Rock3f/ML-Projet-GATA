@@ -67,7 +67,7 @@ def reconnaissance_image(encodings, image, detection_method):
 
 	print("Affichage de l'image")
 	print ("<-- Veuillez changer de fenetre -->")
-	# show the output image
+	# Affichage de l'image
 	cv2.imshow("Image", image)
 
 	print("Apres avoir vu votre belle image, appuyer sur n'importe quelle touche (dans l'image)")
