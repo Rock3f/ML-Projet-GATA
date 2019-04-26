@@ -4,6 +4,7 @@ import pickle
 import cv2
 import os
 import numpy as np
+import subprocess
 
 def get_RGB(source):
     return cv2.cvtColor(source, cv2.COLOR_BGR2RGB)
@@ -142,7 +143,7 @@ def main():
 	path_dataset = "dataset"
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
-	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Quitter"])
+	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Changer le format des images", "Quitter"])
 	print()
 	print("------------------------------------------------")
 	print()
@@ -156,9 +157,10 @@ def main():
 			load_model(path_dataset,path_encoding,detection_method)
 		elif choice == 2:
 			path_image = input("Saisissez l'URI de l'image de test : ")
-
 			reconnaissance_image(path_encoding, path_image, detection_method)
 		elif choice == 3:
+			subprocess.call(['./scripts/shell-image-resize.sh'])
+		elif choice == 4:
 			print("Fermeture de l'application...")
 			break
 
