@@ -63,11 +63,11 @@ def reconnaissance_image(encodings, image, detection_method):
 		# Dessine un rectangle et le nom sur le visage reconnu
 		cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
 
-		#Mise en place de la coordonée Y du label du nom
+		#Mise en place de la coordonee Y du label du nom
 		y = top - 15 if top - 15 > 15 else top + 15
-		#Récupération de la taille en hauteur et longeur du texte
+		#Recuperation de la taille en hauteur et longeur du texte
 		(text_width, text_height) = cv2.getTextSize(name, font, fontScale=font_scale, thickness=1)[0]
-		#Mise à jour des coordonées suivant la taille du texte
+		#Mise e jour des coordonees suivant la taille du texte
 		box_coords = ((left, y), (left + text_width - 2, y - text_height - 2))
 		#Affichage du texte et du fond de couleur
 		cv2.rectangle(image, box_coords[0], box_coords[1], (0,0,0), cv2.FILLED)
@@ -87,18 +87,18 @@ def reconnaissance_cam(encodings, detection_method) :
 	data = pickle.loads(open(encodings, "rb").read())
 
 	# Activation  du flux video via la webcam
-	print("Démarrage de la webcam...")
+	print("Demarrage de la webcam...")
 	vs = VideoStream(src=0).start()
 	#Warmup pour activation de la camera
 	time.sleep(2.0)
 
-	# Boucle sur les différentes frames du flux video
+	# Boucle sur les differentes frames du flux video
 	while True:
 		#Obtention de la frame en cours de la video
 		frame = vs.read()
 		
 		# Conversion de la couleur et resizing de l'image
-		#Plus l'image est petite, plus les fps sont élevés
+		#Plus l'image est petite, plus les fps sont eleves
 		rgb = get_RGB(frame)
 		rgb = imutils.resize(frame, width=300)
 		r = frame.shape[1] / float(rgb.shape[1])
@@ -139,18 +139,18 @@ def reconnaissance_cam(encodings, detection_method) :
 
 		# Boucle sur l'ensemble des visage reconnu
 		for ((top, right, bottom, left), name) in zip(boxes, names):
-			# Modifications des coordonnées détectés
+			# Modifications des coordonnees detectes
 			top = int(top * r)
 			right = int(right * r)
 			bottom = int(bottom * r)
 			left = int(left * r)
 
-			# Affichage des carrés autour des visages + noms
+			# Affichage des carres autour des visages + noms
 			cv2.rectangle(frame, (left, top), (right, bottom),(0, 255, 0), 2)
 			y = top - 15 if top - 15 > 15 else top + 15
-			#Récupération de la taille en hauteur et longeur du texte
+			#Recuperation de la taille en hauteur et longeur du texte
 			(text_width, text_height) = cv2.getTextSize(name, font, fontScale=font_scale, thickness=1)[0]
-			#Mise à jour des coordonées suivant la taille du texte
+			#Mise e jour des coordonees suivant la taille du texte
 			box_coords = ((left, y), (left + text_width - 2, y - text_height - 2))
 			#Affichage du texte et du fond de couleur
 			cv2.rectangle(frame, box_coords[0], box_coords[1], (0,0,0), cv2.FILLED)
@@ -159,11 +159,11 @@ def reconnaissance_cam(encodings, detection_method) :
 		cv2.imshow("Frame", frame)
 		key = cv2.waitKey(1) & 0xFF
 
-		# Lorsque la touche 'q' est ajouté alors quitte le processus
+		# Lorsque la touche 'q' est ajoute alors quitte le processus
 		if key == ord("q"):
 			break
 
-	# Suppression des fenêtres OpenCV (images, photos, videos..)
+	# Suppression des fenetres OpenCV (images, photos, videos..)
 	cv2.destroyAllWindows()
 	vs.stop()
 
@@ -242,20 +242,20 @@ def resize_img(path) :
 		for file in files:
 			#Charge l'image
 			img = cv2.imread("%s\\%s" %(root, file), cv2.IMREAD_UNCHANGED)
-			#Définition d'une taille standard
+			#Definition d'une taille standard
 			max_width = 400
 			#Calcul le pourcentage entre la dimension standard et la dimension actuelle de l'image
 			scale_percent = int(img.shape[1]) / max_width
 			#Si l'image est plus large que la dimension standard
 			if int(img.shape[1] > 400) :
-				#Définie la largeur au format standard
+				#Definie la largeur au format standard
 				width = int(img.shape[1] * scale_percent / 100)
-				#Définie la hauteur en conservant les proportions
+				#Definie la hauteur en conservant les proportions
 				height = int(img.shape[0] * scale_percent / 100)
 				dim = (width, height)
 				#Redimensionne l'image 
 				resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-				#Enregistre l'image modifiée au même endroit pour éviter les doublons
+				#Enregistre l'image modifiee au meme endroit pour eviter les doublons
 				cv2.imwrite("%s\\%s" %(root, file) ,resized);
 
 
@@ -285,7 +285,7 @@ def main():
 			path_image = input("Saisissez l'URI de l'image de test : ")
 			reconnaissance_image(path_encoding, path_image, detection_method)
 
-			# Suppression des fenêtres OpenCV (images, photos, videos..)
+			# Suppression des fenetres OpenCV (images, photos, videos..)
 			cv2.destroyAllWindows()
 		
 		elif choice == 3:
@@ -295,9 +295,9 @@ def main():
 			resize_img(path_folder)
 			
 			#Version de resize avec Bash
-			#Si vous souhaitez utiliser la fonctionnalité de resizing via le bash, il est nécessaire de commenter
-			#la ligne dont la méthode est resize_img
-			#Décommenter la ligne si vous souhaitez réaliser le formatage des images via le bash
+			#Si vous souhaitez utiliser la fonctionnalite de resizing via le bash, il est necessaire de commenter
+			#la ligne dont la methode est resize_img
+			#Decommenter la ligne si vous souhaitez realiser le formatage des images via le bash
 			#subprocess.call(['./scripts/shell-image-resize.sh'])
 		elif choice == 5:
 			print("Fermeture de l'application...")
