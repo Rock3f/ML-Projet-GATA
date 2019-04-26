@@ -242,10 +242,10 @@ def resize_img(path) :
 	#Pour chaque image du dossier et des sous-dossier
 	for root, dirs, files in os.walk(path):
 		for file in files:
-			#print("%s\\%s" % (root, file))
 			try:
 				#Charge l'image
-				img = cv2.imread("%s\\%s" %(root, file), cv2.IMREAD_UNCHANGED)
+				print("%s/%s" %(root, file))
+				img = cv2.imread("%s//%s" %(root, file), cv2.IMREAD_UNCHANGED)
 				#Definition d'une taille standard
 				max_width = 400
 				#Calcul le pourcentage entre la dimension standard et la dimension actuelle de l'image
@@ -261,6 +261,7 @@ def resize_img(path) :
 					resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 					#Enregistre l'image modifiee au meme endroit pour eviter les doublons
 					cv2.imwrite("%s\\%s" %(root, file) ,resized);
+				print("OK")
 			except:
 				print("%s\\%s n'est pas une image" % (root, file))
 
