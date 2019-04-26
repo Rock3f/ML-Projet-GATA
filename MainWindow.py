@@ -295,6 +295,9 @@ def main():
 			resize_img(path_folder)
 			
 			#Version de resize avec Bash
+			#Si vous souhaitez utiliser la fonctionnalité de resizing via le bash, il est nécessaire de commenter
+			#la ligne dont la méthode est resize_img
+			#Décommenter la ligne si vous souhaitez réaliser le formatage des images via le bash
 			#subprocess.call(['./scripts/shell-image-resize.sh'])
 		elif choice == 5:
 			print("Fermeture de l'application...")
