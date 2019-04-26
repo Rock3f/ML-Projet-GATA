@@ -7,6 +7,8 @@ Une fois cela effectué, vous devez aller modifier dans le projet GATA le fichie
 
 Il vous faudra modifier le chemin vers le .exe de magick.exe 
 
+Le script se base sur un déjà existant nommé scale.bat, vous pouvez retrouver le repository Github original dans les commentaires du fichier !
+
 ## Installation pour Linux & Mac - .sh
 
 Vous avez besoin d'executer les commandes suivantes dans votre terminal :
