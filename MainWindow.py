@@ -52,13 +52,18 @@ def reconnaissance_image(encodings, image, detection_method):
 		# Mise a jour de la liste de noms
 		names.append(name)
 
+	font_scale = 0.7
+	font = cv2.FONT_HERSHEY_SIMPLEX
+
 	# Boucle sur l'ensemble des visage reconnu
 	for ((top, right, bottom, left), name) in zip(boxes, names):
 		# Dessine un rectangle et le nom sur le visage reconnu
 		cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
 		y = top - 15 if top - 15 > 15 else top + 15
-		cv2.putText(image, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
-			0.75, (0, 255, 0), 2)
+		(text_width, text_height) = cv2.getTextSize(name, font, fontScale=font_scale, thickness=1)[0]
+		box_coords = ((left, y), (left + text_width - 2, y - text_height - 2))
+		cv2.rectangle(image, box_coords[0], box_coords[1], (0,0,0), cv2.FILLED)
+		cv2.putText(image, name, (left, y), font, fontScale=font_scale, color=(255,255,255), thickness=1)
 
 	print("Affichage de l'image")
 	print ("<-- Veuillez changer de fenetre -->")
