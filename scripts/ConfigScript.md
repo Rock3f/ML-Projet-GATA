@@ -2,6 +2,8 @@
 
 Vous avez besoin d'installer au préalable l'executable d'ImageMagick pour l'execution du script Batch.
 :exclamation: Pensez à noter le chemin d'installation du magick.exe :exclamation:
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/DownloadImageMagick.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/RepertoireImageMagickWindows.png)
 
 Une fois cela effectué, vous devez aller modifier dans le projet GATA le fichier batch-image-resize.bat que vous retrouverez dans le dossier script présent à la racine du projet.
 
