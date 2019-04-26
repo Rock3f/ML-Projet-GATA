@@ -16,9 +16,10 @@
 # Original link tutorial : https://guides.wp-bullet.com/batch-resize-images-using-linux-command-line-and-imagemagick/
 
 # GATA Project specific resize !
-
+# Directory get all the current folder then split on the last 7 characters 
+DIRECTORY=$(cd `dirname $0` && pwd)
 # Absolute path to image folder
-FOLDER="/media/alexandre/8628ADC128ADB11B/Cours/Machine_Learning/ML-Projet-GATA/dataset"
+FOLDER="${DIRECTORY::${#DIRECTORY}-7}"
 
 # Max height
 WIDTH=300
