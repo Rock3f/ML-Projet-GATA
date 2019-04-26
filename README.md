@@ -39,3 +39,5 @@ Vous devez impérativement modifier votre variable FOLDER présente dans le scri
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/BatchResize_InitConfig.png)
 
 Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser
+
+Pour plus d'informations, vous pouvez vous réferer au "ConfigScript.md"
