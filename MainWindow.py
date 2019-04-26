@@ -18,7 +18,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	image = cv2.imread(image)
 	rgb = get_RGB(image)	
 
-	# Detection des coordonnées (x,y) de chaque visage sur l'image 
+	# Detection des coordonnees (x,y) de chaque visage sur l'image 
 	print("Reconnaissances des visages")
 	boxes = face_recognition.face_locations(rgb, model=detection_method)
 	#Encodage des visages
@@ -27,7 +27,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	# Initialisation du tableau de variable
 	names = []
 
-	# Boucle sur l'ensemble des visages détectés 
+	# Boucle sur l'ensemble des visages detectes 
 	for encoding in encodings:
 		# Comparaison des visages
 		matches = face_recognition.compare_faces(data["encodings"],encoding)
@@ -35,21 +35,21 @@ def reconnaissance_image(encodings, image, detection_method):
 
 		# Si le visage correspond
 		if True in matches:
-			# Récupération des index de tous les visages qui correspondent
-			# et Création d'un dictionnaire permettant de compter le nombre totale de visages reconnus 
+			# Recuperation des index de tous les visages qui correspondent
+			# et Creation d'un dictionnaire permettant de compter le nombre totale de visages reconnus 
 			matchedIdxs = [i for (i, b) in enumerate(matches) if b]
 			counts = {}
 
-			# Boucle sur l'ensemble des index correspondant et mise à jour d'un compteur par nom
+			# Boucle sur l'ensemble des index correspondant et mise a jour d'un compteur par nom
 			for i in matchedIdxs:
 				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
 
-			# Récupération du nom dont le compteur est la plus grande valeur
-			#Il s'agit ici d'avoir le nom dont la probabilité est la plus grande
+			# Recuperation du nom dont le compteur est la plus grande valeur
+			#Il s'agit ici d'avoir le nom dont la probabilite est la plus grande
 			name = max(counts, key=counts.get)
 		
-		# Mise à jour de la liste de noms
+		# Mise a jour de la liste de noms
 		names.append(name)
 
 	# Boucle sur l'ensemble des visage reconnu
@@ -61,17 +61,17 @@ def reconnaissance_image(encodings, image, detection_method):
 			0.75, (0, 255, 0), 2)
 
 	print("Affichage de l'image")
-	print ("<-- Veuillez changer de fenêtre -->")
+	print ("<-- Veuillez changer de fenetre -->")
 	# show the output image
 	cv2.imshow("Image", image)
 
-	print("Après avoir vu votre belle image, appuyer sur n'importe quelle touche (dans l'image)")
+	print("Apres avoir vu votre belle image, appuyer sur n'importe quelle touche (dans l'image)")
 	cv2.waitKey(0)
 
 def load_model(path_dataset, path_encoding, detection_method ) :
 
-	# Récupération du path vers notre dataset d'images
-	print("Recupération des informations concernant les images du dataset ...")
+	# Recuperation du path vers notre dataset d'images
+	print("Recuperation des informations concernant les images du dataset ...")
 	image_paths = list(paths.list_images(path_dataset))
 
 	# initialisation des variables de stockages
@@ -88,21 +88,21 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 		image = cv2.imread(image_path)
 		rgb = get_RGB(image)
 
-		# Détection de chaque visage par coordonnées(x, y)
-		# correspondant à chaque visage sur une image
+		# Detection de chaque visage par coordonnees(x, y)
+		# correspondant a chaque visage sur une image
 		boxes = face_recognition.face_locations(rgb, model=detection_method)
 
-		# Récupération de la version encodée de l'ensemble des visages
+		# Recuperation de la version encodee de l'ensemble des visages
 		encodings = face_recognition.face_encodings(rgb, boxes)
 
 		# Boucle au travers l'ensemble des encodages
 		for encoding in encodings:
-			# Ajout d'un tuple encoding + name à note modèle
+			# Ajout d'un tuple encoding + name a note modele
 			known_encodings.append(encoding)
 			known_names.append(name)
 
-	# Création d'un dump encodings + names
-	print("[Serialisation des différents encodings...")
+	# Creation d'un dump encodings + names
+	print("[Serialisation des differents encodings...")
 	data = {"encodings": known_encodings, "names": known_names}
 	f = open(path_encoding, "wb")
 	f.write(pickle.dumps(data))
@@ -112,13 +112,13 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 
 #Affichage du menu
 def display_menu(options):
-	# affichage des options suivant le tableau d'options passé en paramètre
+	# affichage des options suivant le tableau d'options passe en parametre
 	for i in range(len(options)):
 		print("{:d}. {:s}".format(i+1, options[i]))
 	
 	choice = 0
-	#Attente de la réponse utilisateur
-	#Si l'élément envoyé par l'utilisateur n'est pas dans le tableau alors l'utilisateur est prompté de nouveau
+	#Attente de la reponse utilisateur
+	#Si l'element envoye par l'utilisateur n'est pas dans le tableau alors l'utilisateur est prompte de nouveau
 	while not(np.any(choice == np.arange(len(options))+1)):
 		choice = input_number("Choississez une option du menu : ")
 	
@@ -138,18 +138,18 @@ def main():
 	print("------------------------------------------------")
 	print()
 	print("Initialisation de l'interface")
-	print("Récupération des variables")
-	#Variables de définition du path vers le dataset, nom du fichier d'encodage, et de la méthode de détection
+	print("Recuperation des variables")
+	#Variables de definition du path vers le dataset, nom du fichier d'encodage, et de la methode de detection
 	path_dataset = "dataset"
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
-	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Changer le format des images", "Quitter"])
+	menuItems = np.array(["Charger le modele de donnees", "Reconnaissance de l'image", "Changer le format des images", "Quitter"])
 	print()
 	print("------------------------------------------------")
 	print()
 
-	#Affichage du menu jusqu'à ce que l'option quitter soit saisie
-	#Nécessite de trouver une autre solution qu'une boucle infinie ! 
+	#Affichage du menu jusqu'a ce que l'option quitter soit saisie
+	#Necessite de trouver une autre solution qu'une boucle infinie ! 
 	while True : 
 		choice = display_menu(menuItems)
 
