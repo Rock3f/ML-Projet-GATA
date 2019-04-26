@@ -16,10 +16,11 @@
 # Original link tutorial : https://guides.wp-bullet.com/batch-resize-images-using-linux-command-line-and-imagemagick/
 
 # GATA Project specific resize !
-
+# Directory get all the current folder then split on the last 7 characters 
+DIRECTORY=$(cd `dirname $0` && pwd)
 # Absolute path to image folder
-FOLDER="/media/alexandre/8628ADC128ADB11B/Cours/Machine_Learning/ML-Projet-GATA/dataset"
-
+FOLDER="${DIRECTORY::${#DIRECTORY}-7}"
+echo $FOLDER
 
 # Max height
 WIDTH=300
@@ -35,7 +36,7 @@ HEIGHT=400
 #find ${FOLDER} -iname '*.png' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
 
 # Resize jpg only to either height or width, keeps proportions using imagemagick
-find ${FOLDER} -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
+find "${FOLDER}" -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
 
 # Alternative
 #mogrify -path ${FOLDER} -resize ${WIDTH}x${HEIGHT}% *.png -verbose

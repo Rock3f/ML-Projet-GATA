@@ -4,6 +4,7 @@ import pickle
 import cv2
 import os
 import numpy as np
+import subprocess
 
 def get_RGB(source):
     return cv2.cvtColor(source, cv2.COLOR_BGR2RGB)
@@ -17,7 +18,7 @@ def reconnaissance_image(encodings, image, detection_method):
 	image = cv2.imread(image)
 	rgb = get_RGB(image)	
 
-	# Detection des coordonnées (x,y) de chaque visage sur l'image 
+	# Detection des coordonnees (x,y) de chaque visage sur l'image 
 	print("Reconnaissances des visages")
 	boxes = face_recognition.face_locations(rgb, model=detection_method)
 	#Encodage des visages
@@ -26,51 +27,61 @@ def reconnaissance_image(encodings, image, detection_method):
 	# Initialisation du tableau de variable
 	names = []
 
-	# Boucle sur l'ensemble des visages détectés 
+	# Boucle sur l'ensemble des visages detectes 
 	for encoding in encodings:
 		# Comparaison des visages
-		matches = face_recognition.compare_faces(encodings,encoding)
+		matches = face_recognition.compare_faces(data["encodings"],encoding)
 		name = "Non reconnu"
 
 		# Si le visage correspond
 		if True in matches:
-			# Récupération des index de tous les visages qui correspondent
-			# et Création d'un dictionnaire permettant de compter le nombre totale de visages reconnus 
+			# Recuperation des index de tous les visages qui correspondent
+			# et Creation d'un dictionnaire permettant de compter le nombre totale de visages reconnus 
 			matchedIdxs = [i for (i, b) in enumerate(matches) if b]
 			counts = {}
 
-			# Boucle sur l'ensemble des index correspondant et mise à jour d'un compteur par nom
+			# Boucle sur l'ensemble des index correspondant et mise a jour d'un compteur par nom
 			for i in matchedIdxs:
 				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
 
-			# Récupération du nom dont le compteur est la plus grande valeur
-			#Il s'agit ici d'avoir le nom dont la probabilité est la plus grande
+			# Recuperation du nom dont le compteur est la plus grande valeur
+			#Il s'agit ici d'avoir le nom dont la probabilite est la plus grande
 			name = max(counts, key=counts.get)
 		
-		# Mise à jour de la liste de noms
+		# Mise a jour de la liste de noms
 		names.append(name)
+
+	font_scale = 0.7
+	font = cv2.FONT_HERSHEY_SIMPLEX
 
 	# Boucle sur l'ensemble des visage reconnu
 	for ((top, right, bottom, left), name) in zip(boxes, names):
 		# Dessine un rectangle et le nom sur le visage reconnu
 		cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
+
+		#Mise en place de la coordonée Y du label du nom
 		y = top - 15 if top - 15 > 15 else top + 15
-		cv2.putText(image, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
-			0.75, (0, 255, 0), 2)
+		#Récupération de la taille en hauteur et longeur du texte
+		(text_width, text_height) = cv2.getTextSize(name, font, fontScale=font_scale, thickness=1)[0]
+		#Mise à jour des coordonées suivant la taille du texte
+		box_coords = ((left, y), (left + text_width - 2, y - text_height - 2))
+		#Affichage du texte et du fond de couleur
+		cv2.rectangle(image, box_coords[0], box_coords[1], (0,0,0), cv2.FILLED)
+		cv2.putText(image, name, (left, y), font, fontScale=font_scale, color=(255,255,255), thickness=1)
 
 	print("Affichage de l'image")
-	print ("<-- Veuillez changer de fenêtre -->")
-	# show the output image
+	print ("<-- Veuillez changer de fenetre -->")
+	# Affichage de l'image
 	cv2.imshow("Image", image)
 
-	print("Après avoir vu votre belle image, appuyer sur n'importe quelle touche")
+	print("Apres avoir vu votre belle image, appuyer sur n'importe quelle touche (dans l'image)")
 	cv2.waitKey(0)
 
 def load_model(path_dataset, path_encoding, detection_method ) :
 
-	# Récupération du path vers notre dataset d'images
-	print("Recupération des informations concernant les images du dataset ...")
+	# Recuperation du path vers notre dataset d'images
+	print("Recuperation des informations concernant les images du dataset ...")
 	image_paths = list(paths.list_images(path_dataset))
 	print(image_paths)
 
@@ -88,21 +99,21 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 		image = cv2.imread(image_path)
 		rgb = get_RGB(image)
 
-		# Détection de chaque visage par coordonnées(x, y)
-		# correspondant à chaque visage sur une image
+		# Detection de chaque visage par coordonnees(x, y)
+		# correspondant a chaque visage sur une image
 		boxes = face_recognition.face_locations(rgb, model=detection_method)
 
-		# Récupération de la version encodée de l'ensemble des visages
+		# Recuperation de la version encodee de l'ensemble des visages
 		encodings = face_recognition.face_encodings(rgb, boxes)
 
 		# Boucle au travers l'ensemble des encodages
 		for encoding in encodings:
-			# Ajout d'un tuple encoding + name à note modèle
+			# Ajout d'un tuple encoding + name a note modele
 			known_encodings.append(encoding)
 			known_names.append(name)
 
-	# Création d'un dump encodings + names
-	print("[Serialisation des différents encodings...")
+	# Creation d'un dump encodings + names
+	print("[Serialisation des differents encodings...")
 	data = {"encodings": known_encodings, "names": known_names}
 	f = open(path_encoding, "wb")
 	f.write(pickle.dumps(data))
@@ -112,13 +123,13 @@ def load_model(path_dataset, path_encoding, detection_method ) :
 
 #Affichage du menu
 def display_menu(options):
-	# affichage des options suivant le tableau d'options passé en paramètre
+	# affichage des options suivant le tableau d'options passe en parametre
 	for i in range(len(options)):
 		print("{:d}. {:s}".format(i+1, options[i]))
 	
 	choice = 0
-	#Attente de la réponse utilisateur
-	#Si l'élément envoyé par l'utilisateur n'est pas dans le tableau alors l'utilisateur est prompté de nouveau
+	#Attente de la reponse utilisateur
+	#Si l'element envoye par l'utilisateur n'est pas dans le tableau alors l'utilisateur est prompte de nouveau
 	while not(np.any(choice == np.arange(len(options))+1)):
 		choice = input_number("Choississez une option du menu : ")
 	
@@ -164,18 +175,18 @@ def main():
 	print("------------------------------------------------")
 	print()
 	print("Initialisation de l'interface")
-	print("Récupération des variables")
-	#Variables de définition du path vers le dataset, nom du fichier d'encodage, et de la méthode de détection
+	print("Recuperation des variables")
+	#Variables de definition du path vers le dataset, nom du fichier d'encodage, et de la methode de detection
 	path_dataset = "dataset"
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
-	menuItems = np.array(["Charger le modèle de données", "Reconnaissance de l'image", "Redimensionner les images", "Quitter"])
+	menuItems = np.array(["Charger le modele de donnees", "Reconnaissance de l'image", "Redimensionner les images", "Changer le format des images", "Quitter"])
 	print()
 	print("------------------------------------------------")
 	print()
 
-	#Affichage du menu jusqu'à ce que l'option quitter soit saisie
-	#Nécessite de trouver une autre solution qu'une boucle infinie ! 
+	#Affichage du menu jusqu'a ce que l'option quitter soit saisie
+	#Necessite de trouver une autre solution qu'une boucle infinie ! 
 	while True : 
 		choice = display_menu(menuItems)
 
@@ -187,7 +198,9 @@ def main():
 		elif choice == 3:
 			path_folder = input("Saisissez l'URI du dossier contenant les images : ")
 			resize_img(path_folder)
-		elif choice == 4:
+		elif choice == 4:	
+			subprocess.call(['./scripts/shell-image-resize.sh'])
+		elif choice == 5:
 			print("Fermeture de l'application...")
 			break
 
