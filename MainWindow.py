@@ -245,7 +245,10 @@ def resize_img(path) :
 			try:
 				#Charge l'image
 				print("%s/%s" %(root, file))
-				img = cv2.imread("%s//%s" %(root, file), cv2.IMREAD_UNCHANGED)
+				img = cv2.imread("%s/%s" %(root, file), cv2.IMREAD_UNCHANGED)
+				#Pour Windows
+				#img = cv2.imread("%s\\%s" %(root, file), cv2.IMREAD_UNCHANGED)
+
 				#Definition d'une taille standard
 				max_width = 400
 				#Calcul le pourcentage entre la dimension standard et la dimension actuelle de l'image
@@ -260,7 +263,7 @@ def resize_img(path) :
 					#Redimensionne l'image 
 					resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 					#Enregistre l'image modifiee au meme endroit pour eviter les doublons
-					cv2.imwrite("%s\\%s" %(root, file) ,resized);
+					cv2.imwrite("%s\\%s" %(root, file) ,resized)
 				print("OK")
 			except:
 				print("%s\\%s n'est pas une image" % (root, file))
