@@ -59,9 +59,14 @@ def reconnaissance_image(encodings, image, detection_method):
 	for ((top, right, bottom, left), name) in zip(boxes, names):
 		# Dessine un rectangle et le nom sur le visage reconnu
 		cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
+
+		#Mise en place de la coordonée Y du label du nom
 		y = top - 15 if top - 15 > 15 else top + 15
+		#Récupération de la taille en hauteur et longeur du texte
 		(text_width, text_height) = cv2.getTextSize(name, font, fontScale=font_scale, thickness=1)[0]
+		#Mise à jour des coordonées suivant la taille du texte
 		box_coords = ((left, y), (left + text_width - 2, y - text_height - 2))
+		#Affichage du texte et du fond de couleur
 		cv2.rectangle(image, box_coords[0], box_coords[1], (0,0,0), cv2.FILLED)
 		cv2.putText(image, name, (left, y), font, fontScale=font_scale, color=(255,255,255), thickness=1)
 
