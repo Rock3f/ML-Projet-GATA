@@ -1,11 +1,11 @@
-## Installation pour Windows - .bat
+## (Not Finished) Installation pour Windows - .bat
 
 Vous avez besoin d'installer au préalable l'executable d'ImageMagick pour l'execution du script Batch.
 :exclamation: Pensez à noter le chemin d'installation du magick.exe :exclamation:
 
 Une fois cela effectué, vous devez aller modifier dans le projet GATA le fichier batch-image-resize.bat que vous retrouverez dans le dossier script présent à la racine du projet.
 
-
+Il vous faudra modifier le chemin vers le .exe de magick.exe 
 
 ## Installation pour Linux & Mac - .sh
 
@@ -17,8 +17,6 @@ Vous avez besoin d'executer les commandes suivantes dans votre terminal :
 ### Mac
     brew update
     brew intall imagemagick
-
-Vous avez ensuite besoin de modifier le lien du FOLDER comme décrit dans le README.md
 
 ## Notes
 
