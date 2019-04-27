@@ -1,3 +1,5 @@
+# -*- coding: latin-1 -*-
+
 from imutils import paths
 from imutils.video import VideoStream
 import imutils
