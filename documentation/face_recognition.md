@@ -14,7 +14,7 @@ Chaque trait est contitué de plusieurs point permettant de connaître la forme 
 
 Les fonctions appelés dans notre code :
   face_recognition.face_locations(img, number_of_times_to_upsample, model) : 
-   """
+   """ </br>
     Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
     :param img: L'image analysée (as a numpy array)
     :param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. 
