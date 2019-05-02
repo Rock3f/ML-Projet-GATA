@@ -34,10 +34,10 @@ Les fonctions appelés dans notre code : </br>
   face_recognition.face_encodings(face_image, known_face_locations, num_jitters) </br>
   
   Given an image, return the 128-dimension face encoding for each face in the image.</br>
-    :param face_image: Image contenant les visages à reconnaitre</br>
-    :param known_face_locations: Optionel - Coordonnées des visages si elles sont connus.</br>
-    :param num_jitters: Nombre de fois ou on boucle lors du calcul de l'encodage. Plus la valeur est élevé, plus l'algo est précise et lente (i.e. 100 is 100x slower)</br>
-    :return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)</br>
+    - param face_image: Image contenant les visages à reconnaitre</br>
+    - param known_face_locations: Optionel - Coordonnées des visages si elles sont connus.</br>
+    - param num_jitters: Nombre de fois ou on boucle lors du calcul de l'encodage. Plus la valeur est élevé, plus l'algo est précise et lente (i.e. 100 is 100x slower)</br>
+    - return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)</br>
     
      -------------------------------------------------------------------------- </br>
      Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
