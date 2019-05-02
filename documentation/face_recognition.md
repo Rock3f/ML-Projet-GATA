@@ -12,10 +12,10 @@ La librairie analyse l'image et retourne l'emplacement des traits du visage c'es
 
 Chaque trait est contitué de plusieurs point permettant de connaître la forme et l'aspect de ces traits.
 
-Les fonctions appelés dans notre code :
+Les fonctions appelés dans notre code : </br>
    -------------------------------------------------------------------------- </br>
    -------------------------------------------------------------------------- </br>
-  face_recognition.face_locations(img, number_of_times_to_upsample, model) : 
+  face_recognition.face_locations(img, number_of_times_to_upsample, model) : </br>
    -------------------------------------------------------------------------- </br>
     Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus</br>
       :param img: L'image analysée (as a numpy array)</br>
