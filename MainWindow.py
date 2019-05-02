@@ -281,7 +281,7 @@ def main():
 	path_dataset = "dataset"
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
-	menuItems = np.array(["Charger le modele de donnees", "Reconnaissance de l'image", "Reconnaissance via Camera", "Changer le format des images", "Quitter"])
+	menuItems = np.array(["Reconnaissance de l'image", "Reconnaissance via Camera","Charger le modele de donnees", "Changer le format des images", "Quitter"])
 	print("")
 	print("------------------------------------------------")
 	print("")
@@ -291,16 +291,16 @@ def main():
 	while True : 
 		choice = display_menu(menuItems)
 
-		if choice == 1:
+		if choice == 3:
 			load_model(path_dataset,path_encoding,detection_method)
-		elif choice == 2:
+		elif choice == 1:
 			path_image = input("Saisissez l'URI de l'image de test : ")
 			reconnaissance_image(path_encoding, path_image, detection_method)
 
 			# Suppression des fenetres OpenCV (images, photos, videos..)
 			cv2.destroyAllWindows()
 		
-		elif choice == 3:
+		elif choice == 2:
 			reconnaissance_cam(path_encoding, detection_method)
 		elif choice == 4:	
 			path_folder = input("Saisissez l'URI du dossier contenant les images : ")
