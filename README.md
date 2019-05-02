@@ -63,3 +63,50 @@ Nous mettons à disposition un script shell/batch pour resize vos images afin de
 Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser.
 
 Pour plus d'informations, vous pouvez vous référer au "ConfigScript.md"
+
+## Contenu du programme de reconnaissance faciale
+
+Pour utiliser face_recognition vous avez besoin de charger votre modèle de données pour que l'algorithme puisse interprêter les images et vous fournir un résultat. Ci-après, un petit tutorial de notre petit programme
+
+### Navigation
+
+Pour naviguer dans l'application, vous devez rentrer dans votre terminal quelle fonctionnalité vous voulez utiliser puis appuyer sur Entrée.
+
+Pour sortir d'une fonctionnalité, vous avez besoin d'appuyer sur une touche.
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/MenuProgramme.png)
+
+### Première étape : le resize de vos images
+
+Pour gagner en temps de traitement pour la seconde étape, vous aurez besoin de formater vos images à un format plus petit pour limiter les consommations en CPU de vos machines et donc limiter le temps de traitement.
+
+Pour ce faire, **avant de lancer votre programme**, vous aurez besoin au préalable de mettre dans un répertoire les photo où vous retrouvez une seule personne. 
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/dataset1.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/dataset2.png)
+
+Une fois cela fait, vous pouvez déposer une image de test dans le répertoire de test.
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/test1.png)
+
+Vous pourrez alors par la suite lancer le programme et saisir le 4 dans votre console pour lancer le resize automatique de vos images.
+**Atention au format qui doit être pour le moment .jpg**
+
+### Seconde étape : le chargement du modèle
+
+Pour que face_recognition puisse apprendre puis exploiter les données, vous devez charger le modèle de données. Vous avez besoin de charger une première fois le modèle de données.
+Lancez alors la commande 3 dans votre terminal.
+
+### Comment utiliser la reconnaissance par image
+
+Lancez la commande 1 dans votre terminal.
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoImg1.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoImg2.png)
+
+### Comment utiiser la reconnaissance par webcam
+
+Lancez la commande 2 dans votre terminal.
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoWebcam1.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoWebcam2.png)

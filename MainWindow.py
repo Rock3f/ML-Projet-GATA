@@ -274,7 +274,7 @@ def resize_img(path) :
 
 def main():
 	print("------------------------------------------------")
-	print()
+	print("")
 	print("Initialisation de l'interface")
 	print("Recuperation des variables")
 	#Variables de definition du path vers le dataset, nom du fichier d'encodage, et de la methode de detection
@@ -282,9 +282,9 @@ def main():
 	path_encoding = "encodings.pickle"
 	detection_method = "cnn"
 	menuItems = np.array(["Charger le modele de donnees", "Reconnaissance de l'image", "Reconnaissance via Camera", "Changer le format des images", "Quitter"])
-	print()
+	print("")
 	print("------------------------------------------------")
-	print()
+	print("")
 
 	#Affichage du menu jusqu'a ce que l'option quitter soit saisie
 	#Necessite de trouver une autre solution qu'une boucle infinie ! 
