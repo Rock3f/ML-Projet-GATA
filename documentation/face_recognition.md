@@ -19,8 +19,7 @@ Les fonctions appelés dans notre code : </br>
  
    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
    - param img: L'image analysée (as a numpy array)
-   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. 
-                                        Plus le nombre est grand, moins le nombre de visage trouvé" est faible</br>
+   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé" est faible
    - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
      -------------------------------------------------------------------------- 
      Méthodes utilisées : _rect_to_css(face.rect), _trim_css_to_bounds(_rect_to_css(face.rect), img.shape), 
@@ -29,16 +28,15 @@ Les fonctions appelés dans notre code : </br>
    -------------------------------------------------------------------------- </br>
    -------------------------------------------------------------------------- </br>    
    </br>
-  face_recognition.face_encodings(face_image, known_face_locations, num_jitters) </br>
-  
-  Given an image, return the 128-dimension face encoding for each face in the image.</br>
-    - param face_image: Image contenant les visages à reconnaitre</br>
-    - param known_face_locations: Optionel - Coordonnées des visages si elles sont connus.</br>
-    - param num_jitters: Nombre de fois ou on boucle lors du calcul de l'encodage. Plus la valeur est élevé, plus l'algo est précise et lente (i.e. 100 is 100x slower)</br>
-    - return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)</br>
+  face_recognition.face_encodings(face_image, known_face_locations, num_jitters)
+  Given an image, return the 128-dimension face encoding for each face in the image.
+  - param face_image: Image contenant les visages à reconnaitre
+  - param known_face_locations: Optionel - Coordonnées des visages si elles sont connus.
+  - param num_jitters: Nombre de fois ou on boucle lors du calcul de l'encodage. Plus la valeur est élevé, plus l'algo est précise et lente (i.e. 100 is 100x slower)
+  - return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)
     
      -------------------------------------------------------------------------- </br>
-     Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
+  Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
    -------------------------------------------------------------------------- </br>
    -------------------------------------------------------------------------- </br>
   face_recognition.compare_faces()
