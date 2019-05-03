@@ -46,10 +46,6 @@ Une fois votre environnement python installé, veillez à avoir l'assistant pip 
 
 ## Paramètrage des images
 
-:exclamation: Important :exclamation:
-
-Vous pouvez modifier votre variable FOLDER présente dans le script, par défaut, nous l'avons paramétré sur le projet pour prendre en compte les dossier dataset ET test
-
 ### Par défaut avec Python - OpenCV
 
 Nous mettons à disposition une option dans le menu du programme pour faire un resize de vos images (pour gagner en temps de performance) en position 4 
@@ -60,7 +56,11 @@ Nous mettons à disposition une option dans le menu du programme pour faire un r
 
 Nous mettons à disposition un script shell/batch pour resize vos images afin de permettre aux ordinateurs moins puissants de pouvoir exécuter rapidement le programme de reconnaissance.
 
-Vous devez également modifier le chemin dans votre code Python à votre script shell/batch si vous voulez l'utiliser.
+:exclamation: Important :exclamation:
+
+Vous pouvez modifier votre variable FOLDER présente dans le script, par défaut, nous l'avons paramétré sur le projet pour prendre en compte les dossier dataset ET test
+
+Vous devez également modifier dans votre code Python le chemin à votre script shell/batch si vous voulez l'utiliser.
 
 Pour plus d'informations, vous pouvez vous référer au "ConfigScript.md"
 
@@ -90,12 +90,16 @@ Une fois cela fait, vous pouvez déposer une image de test dans le répertoire d
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/test1.png)
 
 Vous pourrez alors par la suite lancer le programme et saisir le 4 dans votre console pour lancer le resize automatique de vos images.
-**Atention au format qui doit être pour le moment .jpg**
+**Atention au format qui doit être pour le moment .jpg pour que le programme le prenne en compte**
+Dans le cas contraire, vous aurez un message dans la console pour vous prévenir que votre image n'a pas été prise en compte à cause d'un mauvais format.
 
 ### Seconde étape : le chargement du modèle
 
 Pour que face_recognition puisse apprendre puis exploiter les données, vous devez charger le modèle de données. Vous avez besoin de charger une première fois le modèle de données.
 Lancez alors la commande 3 dans votre terminal.
+
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/imgModele1.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/imgModele2.png)
 
 ### Comment utiliser la reconnaissance par image
 
@@ -104,7 +108,7 @@ Lancez la commande 1 dans votre terminal.
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoImg1.png)
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/recoImg2.png)
 
-### Comment utiiser la reconnaissance par webcam
+### Comment utiliser la reconnaissance par webcam
 
 Lancez la commande 2 dans votre terminal.
 
