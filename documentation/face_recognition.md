@@ -1,7 +1,7 @@
 # Face Recognition
 La librairie face_recognition que nous utilisons est disponible [ici](https://github.com/ageitgey/face_recognition).
 
-Cette librairie permet d'identifier des visages présents sur une image. Elles est basé sur plusieurs librairies notemment numpy que nous avons exploré en cours.
+Cette librairie permet d'identifier des visages présents sur une image. Elles est basé sur plusieurs librairies notamment numpy que nous avons exploré en cours.
 
 Fonctionnement de la libraire
 
@@ -19,7 +19,7 @@ Chaque trait est contitué de plusieurs point permettant de connaître la forme 
  
    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
    - param img: L'image analysée (as a numpy array)
-   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé est faible
+   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins de visage sont trouvés
    - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
  
  

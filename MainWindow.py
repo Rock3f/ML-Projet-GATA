@@ -263,10 +263,10 @@ def resize_img(path) :
 					#Redimensionne l'image 
 					resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 					#Enregistre l'image modifiee au meme endroit pour eviter les doublons
-					cv2.imwrite("%s\\%s" %(root, file) ,resized)
+					cv2.imwrite("%s/%s" %(root, file) ,resized)
 				print("OK")
 			except:
-				print("%s\\%s n'est pas une image" % (root, file))
+				print("%s/%s n'est pas une image" % (root, file))
 
 			
 
