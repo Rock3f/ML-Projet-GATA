@@ -18,7 +18,7 @@ Chaque trait est contitué de plusieurs point permettant de connaître la forme 
  
    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
    - param img: L'image analysée (as a numpy array)
-   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé" est faible
+   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé est faible
    - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
  
  
@@ -45,3 +45,32 @@ Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, mod
 
 Méthodes utilisées : face_distance(known_face_encodings, face_encoding_to_check) 
 
+# Fonctions utilisés dans les méthodes appelées
+
+## _rect_to_css(rect):
+Convertion d'un rectangle au format d'un objet dlib en un tuple de coordonnées (top, right, bottom, left)
+- param rect: dlib rectangle objet
+- return: un tuple représentant les coordonnées d'un rectangle
+
+## trim_css_to_bounds(css, image_shape):
+Vérification que les coordonnées du tuple sont à l'intérieur de l'image.
+- param css: Tuple représentant les coordonnées du recatngle 
+- param image_shape: numpy shape de l'image au format tableau
+- return: trim tuple représentant le rectangle
+
+## raw_face_locations(img, number_of_times_to_upsample=1, model="hog"):
+Returns an array of bounding boxes of human faces in a image
+- param img: une image (au format numpy array)
+- param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé est faible
+- param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
+- return: une liste de rectangle dlib
+
+## _raw_face_landmarks(face_image, known_face_locations, model="small")
+Cette fonction permet grâce à une image, de déterminer les différents points clés d'une images. Par exemple, dans le cadre de la reconnaissance faciale, détecter où sont les yeux, la bouche, le nez, etc..
+- return: Cordonnées des différents points clés détectées
+
+## face_distance(face_encodings, face_to_compare):
+A partir du modèle, comparaison de l'image avec l'ensemble du modèle et obtient la distance euclidienne de chaque comparaison. La distance donne à quel point les visages sont ressemblant ou non.
+- param faces: Ensemble du modèle
+- param face_to_compare: Image à comparer
+- return: Objet numpy array avec la distance pour chaque visage
