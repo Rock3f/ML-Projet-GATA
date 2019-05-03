@@ -22,8 +22,7 @@ Les fonctions appelés dans notre code : </br>
    - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé" est faible
    - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
   -------------------------------------------------------------------------- 
-  Méthodes utilisées : _rect_to_css(face.rect), _trim_css_to_bounds(_rect_to_css(face.rect), img.shape), 
-                          _raw_face_locations(img,number_of_times_to_upsample, model)
+  Méthodes utilisées : _rect_to_css(face.rect), _trim_css_to_bounds(_rect_to_css(face.rect), img.shape), _raw_face_locations(img,number_of_times_to_upsample, model)
     
   -------------------------------------------------------------------------- </br>
   -------------------------------------------------------------------------- </br>    
@@ -39,11 +38,16 @@ Les fonctions appelés dans notre code : </br>
   Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
   -------------------------------------------------------------------------- </br>
   -------------------------------------------------------------------------- </br>
+   </br>
   face_recognition.compare_faces()
   Comparaison de la liste des visages situés dans le modèle avec l'image passée en paramètre
     - param known_face_encodings: liste des visages encodées
     - param face_encoding_to_check: Visage encodé à reconnaître
     - param tolerance: Différence entre chaque visages pour que l'on considère que c'est une réussite. Plus la valeur est petite, plus la comparaison est stricte. Les meilleurs perfomances sont constatées avec une valeur en 0.6.
     - return: une liste de booléen qui indique quels visages ont été rencontrés
+
+  -------------------------------------------------------------------------- </br>
+  Méthodes utilisées :
+
   -------------------------------------------------------------------------- </br>
   -------------------------------------------------------------------------- </br>
