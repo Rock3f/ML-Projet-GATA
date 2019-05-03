@@ -98,6 +98,7 @@ Dans le cas contraire, vous aurez un message dans la console pour vous prévenir
 ### Seconde étape : le chargement du modèle
 
 Pour que face_recognition puisse apprendre puis exploiter les données, vous devez charger le modèle de données. Vous avez besoin de charger une première fois le modèle de données.
+
 Lancez alors la commande 3 dans votre terminal.
 
 ![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/imgModele1.png)
