@@ -7,5 +7,6 @@ Afin de détecter les visages, elle se base sur l'histogramme de gradients orien
 
 ## Pour aller plus loin
 
-Pour plus de détails, vous pouvez consulter directement la librairie
+Pour plus de détails, vous pouvez consulter directement la librairie c++ et les sources en python de face_detector :
+
 Les sources de [dlib](https://github.com/davisking/dlib) et [dlib.face_detector()](https://github.com/davisking/dlib)
