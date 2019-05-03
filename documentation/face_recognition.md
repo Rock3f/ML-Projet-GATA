@@ -1,7 +1,7 @@
 # Face Recognition
 La librairie face_recognition que nous utilisons est disponible [ici](https://github.com/ageitgey/face_recognition).
 
-Cette librairie permet d'identifier des visages présents sur une image. Elles est basé sur plusieurs librairies notemment numpy que nous avons exploré en cours.
+Cette librairie permet d'identifier des visages présents sur une image. Elles est basé sur plusieurs librairies notamment numpy que nous avons exploré en cours.
 
 Fonctionnement de la libraire
 
