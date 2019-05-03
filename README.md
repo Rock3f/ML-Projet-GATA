@@ -97,6 +97,9 @@ Vous pourrez alors par la suite lancer le programme et saisir le 4 dans votre co
 Pour que face_recognition puisse apprendre puis exploiter les données, vous devez charger le modèle de données. Vous avez besoin de charger une première fois le modèle de données.
 Lancez alors la commande 3 dans votre terminal.
 
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/imgModele1.png)
+![alt text](https://raw.github.com/Rock3f/ML-Projet-GATA/master/.assets/imgModele2.png)
+
 ### Comment utiliser la reconnaissance par image
 
 Lancez la commande 1 dans votre terminal.
