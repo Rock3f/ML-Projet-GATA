@@ -91,7 +91,7 @@ Une fois cela fait, vous pouvez déposer une image de test dans le répertoire d
 
 Vous pourrez alors par la suite lancer le programme et saisir le 4 dans votre console pour lancer le resize automatique de vos images.
 
-**Atention au format qui doit être pour le moment .jpg pour que le programme le prenne en compte**
+**Attention au format qui doit être pour le moment .jpg pour que le programme le prenne en compte**
 
 Dans le cas contraire, vous aurez un message dans la console pour vous prévenir que votre image n'a pas été prise en compte à cause d'un mauvais format.
 
