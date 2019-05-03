@@ -16,12 +16,12 @@ Les fonctions appelés dans notre code : </br>
    -------------------------------------------------------------------------- </br>
    -------------------------------------------------------------------------- </br>
   face_recognition.face_locations(img, number_of_times_to_upsample, model) : </br>
- 
-    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
-      - param img: L'image analysée (as a numpy array)
-      - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. 
+  Retourne un tableau avec les coordonnées des différents rectangles des visages humains reconnus
+
+  - param img: L'image analysée (as a numpy array)
+  - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. 
                                         Plus le nombre est grand, moins le nombre de visage trouvé" est faible</br>
-      - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en    
+  - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en    
                     deeplearning). par défaut "HOG"
      -------------------------------------------------------------------------- </br>
      Méthodes utilisées : _rect_to_css(face.rect), _trim_css_to_bounds(_rect_to_css(face.rect), img.shape), 
