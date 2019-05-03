@@ -13,9 +13,8 @@ La librairie analyse l'image et retourne l'emplacement des traits du visage c'es
 Chaque trait est contitué de plusieurs point permettant de connaître la forme et l'aspect de ces traits.
 
 Les fonctions appelés dans notre code : </br>
-   -------------------------------------------------------------------------- </br>
-   -------------------------------------------------------------------------- </br>
-  face_recognition.face_locations(img, number_of_times_to_upsample, model) : </br>
+
+  ## face_recognition.face_locations(img, number_of_times_to_upsample, model) : </br>
  
    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
    - param img: L'image analysée (as a numpy array)
@@ -24,30 +23,23 @@ Les fonctions appelés dans notre code : </br>
   -------------------------------------------------------------------------- 
   Méthodes utilisées : _rect_to_css(face.rect), _trim_css_to_bounds(_rect_to_css(face.rect), img.shape), _raw_face_locations(img,number_of_times_to_upsample, model)
     
-  -------------------------------------------------------------------------- </br>
-  -------------------------------------------------------------------------- </br>    
-   </br>
-  face_recognition.face_encodings(face_image, known_face_locations, num_jitters)
+   
+  ## face_recognition.face_encodings(face_image, known_face_locations, num_jitters): </br>
   A partir d'une image, retourne les 128 dimensions encodées de chaque visage 
   - param face_image: Image contenant les visages à reconnaitre
   - param known_face_locations: Optionel - Coordonnées des visages si elles sont connus.
   - param num_jitters: Nombre de fois ou on boucle lors du calcul de l'encodage. Plus la valeur est élevé, plus l'algo est précise et lente (i.e. 100 is 100x slower)
-  - return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)
-    
+  - return: une liste de 128 dimension contenant l'encodage des visages (une dimension pour chaque visage)  
   -------------------------------------------------------------------------- </br>
   Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
-  -------------------------------------------------------------------------- </br>
-  -------------------------------------------------------------------------- </br>
-   </br>
-  face_recognition.compare_faces()
+  
+  ## face_recognition.compare_faces(): </br>
   Comparaison de la liste des visages situés dans le modèle avec l'image passée en paramètre
-    - param known_face_encodings: liste des visages encodées
-    - param face_encoding_to_check: Visage encodé à reconnaître
-    - param tolerance: Différence entre chaque visages pour que l'on considère que c'est une réussite. Plus la valeur est petite, plus la comparaison est stricte. Les meilleurs perfomances sont constatées avec une valeur en 0.6.
-    - return: une liste de booléen qui indique quels visages ont été rencontrés
-
+  - param known_face_encodings: liste des visages encodées
+  - param face_encoding_to_check: Visage encodé à reconnaître
+  - param tolerance: Différence entre chaque visages pour que l'on considère que c'est une réussite. Plus la valeur est petite, plus la comparaison est stricte. Les meilleurs perfomances sont constatées avec une valeur en 0.6.
+  - return: une liste de booléen qui indique quels visages ont été rencontrés
   -------------------------------------------------------------------------- </br>
   Méthodes utilisées :
-
   -------------------------------------------------------------------------- </br>
   -------------------------------------------------------------------------- </br>
