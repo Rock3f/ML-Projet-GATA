@@ -19,7 +19,7 @@ Chaque trait est contitué de plusieurs point permettant de connaître la forme 
  
    Retourne un tableau avec les coordonnées des différents rectangles des visages humain reconnus
    - param img: L'image analysée (as a numpy array)
-   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins le nombre de visage trouvé est faible
+   - param number_of_times_to_upsample: Nombre de fois où l'image sera bouclé afin de reconnaitre les images. Plus le nombre est grand, moins de visage sont trouvés
    - param model: Quel modèle utilisé. Deux types de modèle hog (moins précis mais plus rapide) et cnn (model en deeplearning). par défaut "HOG"
  
  
