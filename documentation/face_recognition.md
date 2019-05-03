@@ -12,7 +12,7 @@ La librairie analyse l'image et retourne l'emplacement des traits du visage c'es
 
 Chaque trait est contitué de plusieurs point permettant de connaître la forme et l'aspect de ces traits.
 
-Les fonctions appelés dans notre code : </br>
+# Les fonctions appelés dans notre code :
 
   ## face_recognition.face_locations(img, number_of_times_to_upsample, model) : </br>
  
@@ -35,7 +35,7 @@ Les fonctions appelés dans notre code : </br>
   
 Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, model="small"), face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)
   
-  ## face_recognition.compare_faces(): </br>
+  ## face_recognition.compare_faces(known_face_encodings, face_encoding_to_check, tolerance): </br>
   Comparaison de la liste des visages situés dans le modèle avec l'image passée en paramètre
   - param known_face_encodings: liste des visages encodées
   - param face_encoding_to_check: Visage encodé à reconnaître
@@ -43,5 +43,5 @@ Méthodes utilisées : _raw_face_landmarks(face_image, known_face_locations, mod
   - return: une liste de booléen qui indique quels visages ont été rencontrés
 
 
-Méthodes utilisées :
+Méthodes utilisées : face_distance(known_face_encodings, face_encoding_to_check) 
 
